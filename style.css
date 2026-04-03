@@ -200,6 +200,27 @@ body.light .search-bar {
   resize: vertical;
 }
 
+
+.easter-message {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(139, 30, 63, 0.9);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.easter-message.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
 .submit-drink-button {
   align-self: center;
   padding: 10px 18px;

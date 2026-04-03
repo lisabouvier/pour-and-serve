@@ -19,6 +19,8 @@
     Install App
   </button>
 
+  <p id="easterMessage" class="easter-message"></p>
+
   <section class="hero">
     <h1 class="hero-title">Pour and Serve</h1>
     <p class="hero-subtitle">
@@ -27,6 +29,7 @@
     </p>
   </section>
 
+  
   <nav class="menu">
     <a href="#" class="active" data-filter="all">Home</a>
     <a href="#" data-filter="favorites">Favorites</a>
@@ -122,6 +125,16 @@
     const addDrinkForm = document.getElementById("addDrinkForm");
     const formMessage = document.getElementById("formMessage");
 
+    const easterMessage = document.getElementById("easterMessage");
+
+    function showEasterMessage(text) {
+  easterMessage.textContent = text;
+  easterMessage.classList.add("show");
+
+  setTimeout(() => {
+    easterMessage.classList.remove("show");
+  }, 2500);
+}
     let savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     let currentFilter = "all";
 
@@ -141,7 +154,19 @@
       const cards = document.querySelectorAll(".card");
       const searchValue = searchInput.value.toLowerCase().trim();
 
-      if (currentFilter === "add-drink") {
+      // 🍸 Easter Egg triggers
+if (searchValue === "86 me") {
+  showEasterMessage("You're cut off. Drink water 😏");
+}
+
+if (searchValue === "shift drink") {
+  showEasterMessage("Alright… one quick one 👀");
+  
+  if (searchValue === "help me") {
+  showEasterMessage("Breathe. You’ve got this. One drink at a time 🍸");
+}
+
+           if (currentFilter === "add-drink") {
   addDrinkSection.classList.add("active");
   aboutSection.classList.remove("active");
   container.style.display = "none";

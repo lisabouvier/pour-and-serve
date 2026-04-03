@@ -31,7 +31,7 @@
     <a href="#" class="active" data-filter="all">Home</a>
     <a href="#" data-filter="favorites">Favorites</a>
     <a href="#" data-filter="add-drink">Add a Drink</a>
-    <a href="#">About</a>
+    <a href="#" data-filter="about">About</a>
     <a href="#">Contact</a>
 
     <label class="theme-switch">
@@ -76,6 +76,50 @@
     </form>
   </section>
 
+  <section class="about">
+  <h1>About Pour & Serve</h1>
+
+  <p>
+    This wasn’t built in a quiet office.
+  </p>
+
+  <p>
+    It was built in the middle of real shifts — loud bars, long nights, and that 
+    moment where someone orders something and your brain just… blanks.
+  </p>
+
+  <p>
+    You’re three deep. Tickets are stacking. Someone wants a Green Tea shot, 
+    someone else wants something “not too sweet but also strong,” and you don’t 
+    have time to guess.
+  </p>
+
+  <p>
+    That’s where this comes in.
+  </p>
+
+  <p>
+    Pour & Serve is a no-BS drink reference built for speed. No stories. 
+    No essays. No scrolling through someone’s life story to find a ratio.
+  </p>
+
+  <p>
+    Just the drinks. Clean. Fast. Done.
+  </p>
+
+  <p>
+    Built by a bartender who got tired of digging for answers mid-shift.
+  </p>
+
+  <p>
+    If you’ve ever stood there thinking, “I should know this…” — yeah, this is for you.
+  </p>
+
+  <p class="about-signoff">
+    Now get back to the bar.
+  </p>
+</section>
+
   <section class="container"></section>
 
   <script>
@@ -100,18 +144,24 @@
         button.setAttribute("aria-label", "Add to favorites");
       }
     }
-
+      const aboutSection = document.getElementById("aboutSection");
     function applyFilters() {
       const cards = document.querySelectorAll(".card");
       const searchValue = searchInput.value.toLowerCase().trim();
 
       if (currentFilter === "add-drink") {
-        addDrinkSection.classList.add("active");
-        container.style.display = "none";
-      } else {
-        addDrinkSection.classList.remove("active");
-        container.style.display = "";
-      }
+  addDrinkSection.classList.add("active");
+  aboutSection.classList.remove("active");
+  container.style.display = "none";
+} else if (currentFilter === "about") {
+  addDrinkSection.classList.remove("active");
+  aboutSection.classList.add("active");
+  container.style.display = "none";
+} else {
+  addDrinkSection.classList.remove("active");
+  aboutSection.classList.remove("active");
+  container.style.display = "";
+}
 
       cards.forEach((card) => {
         const titleEl = card.querySelector(".card__title");

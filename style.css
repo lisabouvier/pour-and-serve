@@ -118,6 +118,36 @@ body.light .search-bar {
   width: 100%;
 }
 
+.about {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 24px;
+  line-height: 1.7;
+}
+
+.about h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about p {
+  margin-bottom: 14px;
+}
+
+.about-signoff {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 20px;
+  color: #ffd1dc;
+}
+
+#aboutSection {
+  display: none;
+}
+
+#aboutSection.active {
+  display: block;
+}
 
 #addDrinkSection {
   display: none;

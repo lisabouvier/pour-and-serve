@@ -2,7 +2,7 @@
   "name": "Pour & Serve",
   "short_name": "Pour & Serve",
   "description": "A bartender quick-reference app for cocktails, favorites, and fast dark-mode browsing.",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#111318",
   "theme_color": "#8B1E3F",

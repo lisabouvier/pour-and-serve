@@ -1,4 +1,4 @@
-const CACHE_NAME = "pour-and-serve-v3";
+const CACHE_NAME = "pour-and-serve-v4";
 const ASSETS = [
   "./",
   "./index.html",

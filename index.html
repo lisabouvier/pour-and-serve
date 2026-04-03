@@ -5,27 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pour & Serve</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#8B1E3F">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#8B1E3F" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
 </head>
-
 <body>
 
   <p class="install-hint">
     📱 <strong>Pro Tip: Add this to your home screen for quick access!</strong>
   </p>
-  <button id="installButton" class="install-cta" hidden>
-  Install App
-</button>
 
-<section class="hero">
-  <h1 class="hero-title">Pour and Serve</h1>
-  <p class="hero-subtitle">
-    Built for bartenders, by a bartender.<br>
-    Fast, no-nonsense drink reference for real shifts.
-  </p>
-</section>
+  <button id="installButton" class="install-cta" hidden>
+    Install App
+  </button>
+
+  <section class="hero">
+    <h1 class="hero-title">Pour and Serve</h1>
+    <p class="hero-subtitle">
+      Built for bartenders, by a bartender.<br />
+      Fast, no-nonsense drink reference for real shifts.
+    </p>
+  </section>
 
   <nav class="menu">
     <a href="#" class="active" data-filter="all">Home</a>
@@ -33,10 +33,9 @@
     <a href="#" data-filter="add-drink">Add a Drink</a>
     <a href="#">About</a>
     <a href="#">Contact</a>
-    
 
-     <label class="theme-switch">
-      <input type="checkbox" id="themeToggle">
+    <label class="theme-switch">
+      <input type="checkbox" id="themeToggle" />
       <span class="slider">
         <span class="icon moon">🌙</span>
         <span class="icon sun">☀️</span>
@@ -53,106 +52,42 @@
     />
   </section>
 
-<section id="addDrinkSection">
-  <form 
-  class="add-drink-form" 
-  id="addDrinkForm"
-  action="https://formspree.io/f/xaqlpdlv"
-  method="POST"
->
+  <section id="addDrinkSection">
+    <form
+      class="add-drink-form"
+      id="addDrinkForm"
+      action="https://formspree.io/f/xaqlpdlv"
+      method="POST"
+    >
+      <h2 class="add-drink-title">Submit a Drink</h2>
+      <p class="add-drink-subtitle">
+        Built by bartenders. Help make it better.
+      </p>
 
-  <h2 class="add-drink-title">Submit a Drink</h2>
-  <p class="add-drink-subtitle">
-    Built by bartenders. Help make it better.
-  </p>
+      <input type="text" name="drinkName" placeholder="Drink Name" required />
+      <input type="text" name="ingredients" placeholder="Ingredients" required />
+      <input type="text" name="ratio" placeholder="Ratio" />
+      <input type="text" name="glass" placeholder="Glass" />
+      <input type="text" name="garnish" placeholder="Garnish" />
+      <textarea name="bartenderNote" placeholder="Bartender Note"></textarea>
 
-  <input type="text" name="drinkName" placeholder="Drink Name" required />
-  <input type="text" name="ingredients" placeholder="Ingredients" required />
-  <input type="text" name="ratio" placeholder="Ratio" />
-  <input type="text" name="glass" placeholder="Glass" />
-  <input type="text" name="garnish" placeholder="Garnish" />
-  <textarea name="bartenderNote" placeholder="Bartender Note"></textarea>
-
-  <button type="submit" class="submit-drink-button">Submit Drink</button>
-
-  <p class="form-message" id="formMessage"></p>
-</form>
-</section>
-
-  <p class="form-message" id="formMessage"></p>
-</section>
+      <button type="submit" class="submit-drink-button">Submit Drink</button>
+      <p class="form-message" id="formMessage"></p>
+    </form>
+  </section>
 
   <section class="container"></section>
 
   <script>
-  const container = document.querySelector(".container");
-  const searchInput = document.getElementById("searchInput");
-
-  fetch("drinks.json")
-  .then(res => res.json())
-  .then(drinks => {
-    container.innerHTML = "";
-
-    drinks.forEach(drink => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.dataset.id = drink.id;
-
-      card.innerHTML = `
-        <button class="favorite-button" aria-label="Add to favorites">☆</button>
-        <h2 class="card__title">${drink.name}</h2>
-        <p class="card__text">${drink.ingredients}</p>
-        <p class="card__meta">${drink.meta}</p>
-        <div class="card__details">
-          <p><strong>Ratio:</strong> ${drink.ratio}</p>
-          <p><strong>Glass:</strong> ${drink.glass}</p>
-          <p><strong>Garnish:</strong> ${drink.garnish}</p>
-        </div>
-        <button class="card__button">Pour & Serve</button>
-      `;
-
-      container.appendChild(card);
-    });
-
-      initializeApp();
-addDrinkForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  const formData = new FormData(addDrinkForm);
-
-  try {
-    const response = await fetch(addDrinkForm.action, {
-      method: "POST",
-      body: formData,
-      headers: {
-        Accept: "application/json"
-      }
-    });
-
-    if (response.ok) {
-      formMessage.textContent = "Thanks — your drink submission has been received.";
-      addDrinkForm.reset();
-    } else {
-      formMessage.textContent = "Something went wrong. Try again.";
-    }
-  } catch (error) {
-    formMessage.textContent = "Something went wrong. Try again.";
-  }
-});
-      formMessage.textContent = "Thanks — your drink submission has been received.";
-  addDrinkForm.reset();
-});
-  });
-</script>
-
-  <script>
+    const container = document.querySelector(".container");
+    const searchInput = document.getElementById("searchInput");
     const filterLinks = document.querySelectorAll("[data-filter]");
+    const addDrinkSection = document.getElementById("addDrinkSection");
+    const addDrinkForm = document.getElementById("addDrinkForm");
+    const formMessage = document.getElementById("formMessage");
+
     let savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     let currentFilter = "all";
-
-    const addDrinkSection = document.getElementById("addDrinkSection");
-const addDrinkForm = document.getElementById("addDrinkForm");
-const formMessage = document.getElementById("formMessage");
 
     function updateFavoriteButton(button, isFavorite) {
       if (isFavorite) {
@@ -171,10 +106,12 @@ const formMessage = document.getElementById("formMessage");
       const searchValue = searchInput.value.toLowerCase().trim();
 
       if (currentFilter === "add-drink") {
-  addDrinkSection.classList.add("active");
-} else {
-  addDrinkSection.classList.remove("active");
-}
+        addDrinkSection.classList.add("active");
+        container.style.display = "none";
+      } else {
+        addDrinkSection.classList.remove("active");
+        container.style.display = "";
+      }
 
       cards.forEach((card) => {
         const titleEl = card.querySelector(".card__title");
@@ -198,9 +135,9 @@ const formMessage = document.getElementById("formMessage");
           currentFilter === "favorites" ? savedFavorites.includes(cardId) : true;
 
         const shouldShow =
-  currentFilter === "add-drink"
-    ? false
-    : matchesSearch && matchesFavorite;
+  currentFilter !== "add-drink" &&
+  matchesSearch &&
+  matchesFavorite;
 
         if (shouldShow) {
           card.style.display = "";
@@ -291,13 +228,66 @@ const formMessage = document.getElementById("formMessage");
 
       applyFilters();
     }
+
+    fetch("drinks.json")
+      .then((res) => res.json())
+      .then((drinks) => {
+        container.innerHTML = "";
+
+        drinks.forEach((drink) => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.dataset.id = drink.id;
+
+          card.innerHTML = `
+            <button class="favorite-button" aria-label="Add to favorites">☆</button>
+            <h2 class="card__title">${drink.name}</h2>
+            <p class="card__text">${drink.ingredients}</p>
+            <p class="card__meta">${drink.meta}</p>
+            <div class="card__details">
+              <p><strong>Ratio:</strong> ${drink.ratio}</p>
+              <p><strong>Glass:</strong> ${drink.glass}</p>
+              <p><strong>Garnish:</strong> ${drink.garnish}</p>
+            </div>
+            <button class="card__button">Pour & Serve</button>
+          `;
+
+          container.appendChild(card);
+        });
+
+        initializeApp();
+      });
+
+    addDrinkForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(addDrinkForm);
+
+      try {
+        const response = await fetch(addDrinkForm.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json"
+          }
+        });
+
+        if (response.ok) {
+          formMessage.textContent = "Thanks — your drink submission has been received.";
+          addDrinkForm.reset();
+        } else {
+          formMessage.textContent = "Something went wrong. Try again.";
+        }
+      } catch (error) {
+        formMessage.textContent = "Something went wrong. Try again.";
+      }
+    });
   </script>
 
   <script>
     const toggle = document.getElementById("themeToggle");
     const savedTheme = localStorage.getItem("theme");
 
-    // Default = DARK
     if (savedTheme === "light") {
       document.body.classList.add("light");
       toggle.checked = false;
@@ -319,9 +309,12 @@ const formMessage = document.getElementById("formMessage");
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
-        navigator.serviceWorker.register("service-worker.js")
+        navigator.serviceWorker
+          .register("service-worker.js")
           .then(() => console.log("Service worker registered"))
-          .catch((error) => console.error("Service worker registration failed:", error));
+          .catch((error) =>
+            console.error("Service worker registration failed:", error)
+          );
       });
     }
   </script>
@@ -360,6 +353,5 @@ const formMessage = document.getElementById("formMessage");
   </script>
 
   <script src="script.js"></script>
-
 </body>
 </html>

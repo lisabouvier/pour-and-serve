@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pour & Serve</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#8B1E3F">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+</head>
+
+<body>
+
+  <p class="install-hint">
+    📱 <strong>Pro Tip: Add this to your home screen for quick access!</strong>
+  </p>
+
+  <nav class="menu">
+    <a href="#" class="active" data-filter="all">Home</a>
+    <a href="#" data-filter="favorites">Favorites</a>
+    <a href="#">Add a Drink</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <button id="installButton" hidden>Install App</button>
+
+    <label class="theme-switch">
+      <input type="checkbox" id="themeToggle">
+      <span class="slider">
+        <span class="icon moon">🌙</span>
+        <span class="icon sun">☀️</span>
+      </span>
+    </label>
+  </nav>
+
+  <section class="search-section">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search by drink name, or ingredients..."
+      class="search-bar"
+    />
+  </section>
+
+  <section class="container"></section>
+
+  <script>
+  const container = document.querySelector(".container");
+
+  fetch("drinks.json")
+  .then(res => res.json())
+  .then(drinks => {
+    container.innerHTML = "";
+
+    drinks.forEach(drink => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.dataset.id = drink.id;
+
+      card.innerHTML = `
+        <button class="favorite-button" aria-label="Add to favorites">☆</button>
+        <h2 class="card__title">${drink.name}</h2>
+        <p class="card__text">${drink.ingredients}</p>
+        <p class="card__meta">${drink.meta}</p>
+        <div class="card__details">
+          <p><strong>Ratio:</strong> ${drink.ratio}</p>
+          <p><strong>Glass:</strong> ${drink.glass}</p>
+          <p><strong>Garnish:</strong> ${drink.garnish}</p>
+        </div>
+        <button class="card__button">Pour & Serve</button>
+      `;
+
+      container.appendChild(card);
+    });
+
+    // initializeApp();
+  });
+</script>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const filterLinks = document.querySelectorAll("[data-filter]");
+    let savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    let currentFilter = "all";
+
+    function updateFavoriteButton(button, isFavorite) {
+      if (isFavorite) {
+        button.classList.add("is-favorite");
+        button.textContent = "★";
+        button.setAttribute("aria-label", "Remove from favorites");
+      } else {
+        button.classList.remove("is-favorite");
+        button.textContent = "☆";
+        button.setAttribute("aria-label", "Add to favorites");
+      }
+    }
+
+    function applyFilters() {
+      const cards = document.querySelectorAll(".card");
+      const searchValue = searchInput.value.toLowerCase().trim();
+
+      cards.forEach((card) => {
+        const titleEl = card.querySelector(".card__title");
+        const textEl = card.querySelector(".card__text");
+        const cardId = card.dataset.id;
+
+        const originalTitle = titleEl.dataset.original || titleEl.textContent;
+        const originalText = textEl.dataset.original || textEl.textContent;
+
+        titleEl.dataset.original = originalTitle;
+        textEl.dataset.original = originalText;
+
+        titleEl.innerHTML = originalTitle;
+        textEl.innerHTML = originalText;
+
+        const matchesSearch =
+          originalTitle.toLowerCase().includes(searchValue) ||
+          originalText.toLowerCase().includes(searchValue);
+
+        const matchesFavorite =
+          currentFilter === "favorites" ? savedFavorites.includes(cardId) : true;
+
+        const shouldShow = matchesSearch && matchesFavorite;
+
+        if (shouldShow) {
+          card.style.display = "";
+          requestAnimationFrame(() => {
+            card.classList.remove("is-hidden");
+          });
+
+          if (searchValue !== "") {
+            const safeValue = searchValue.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            const regex = new RegExp(`(${safeValue})`, "gi");
+
+            titleEl.innerHTML = originalTitle.replace(
+              regex,
+              `<span class="highlight">$1</span>`
+            );
+
+            textEl.innerHTML = originalText.replace(
+              regex,
+              `<span class="highlight">$1</span>`
+            );
+          }
+        } else {
+          card.classList.add("is-hidden");
+
+          setTimeout(() => {
+            if (card.classList.contains("is-hidden")) {
+              card.style.display = "none";
+            }
+          }, 250);
+        }
+      });
+    }
+
+    function initializeApp() {
+      const cards = document.querySelectorAll(".card");
+      const recipeButtons = document.querySelectorAll(".card__button");
+      const favoriteButtons = document.querySelectorAll(".favorite-button");
+
+      cards.forEach((card) => {
+        const cardId = card.dataset.id;
+        const button = card.querySelector(".favorite-button");
+        updateFavoriteButton(button, savedFavorites.includes(cardId));
+      });
+
+      recipeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const card = button.closest(".card");
+          card.classList.toggle("expanded");
+
+          button.textContent = card.classList.contains("expanded")
+            ? "Hide Recipe"
+            : "Pour & Serve";
+        });
+      });
+
+      favoriteButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const card = button.closest(".card");
+          const cardId = card.dataset.id;
+          const isFavorite = savedFavorites.includes(cardId);
+
+          if (isFavorite) {
+            savedFavorites = savedFavorites.filter((id) => id !== cardId);
+            updateFavoriteButton(button, false);
+          } else {
+            savedFavorites.push(cardId);
+            updateFavoriteButton(button, true);
+          }
+
+          localStorage.setItem("favorites", JSON.stringify(savedFavorites));
+          applyFilters();
+        });
+      });
+
+      searchInput.addEventListener("input", applyFilters);
+
+      filterLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          currentFilter = link.dataset.filter;
+
+          filterLinks.forEach((item) => item.classList.remove("active"));
+          link.classList.add("active");
+
+          applyFilters();
+        });
+      });
+
+      applyFilters();
+    }
+  </script>
+
+  <script>
+    const toggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("theme");
+
+    // Default = DARK
+    if (savedTheme === "light") {
+      document.body.classList.add("light");
+      toggle.checked = false;
+    } else {
+      toggle.checked = true;
+    }
+
+    toggle.addEventListener("change", () => {
+      if (toggle.checked) {
+        document.body.classList.remove("light");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.body.classList.add("light");
+        localStorage.setItem("theme", "light");
+      }
+    });
+  </script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/service-worker.js")
+          .then(() => console.log("Service worker registered"))
+          .catch((error) => console.error("Service worker registration failed:", error));
+      });
+    }
+  </script>
+
+  <script>
+    let deferredPrompt;
+    const installButton = document.getElementById("installButton");
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+      installButton.hidden = false;
+    });
+
+    installButton.addEventListener("click", async () => {
+      if (!deferredPrompt) return;
+
+      deferredPrompt.prompt();
+      const choiceResult = await deferredPrompt.userChoice;
+
+      if (choiceResult.outcome === "accepted") {
+        console.log("User accepted the install prompt");
+      } else {
+        console.log("User dismissed the install prompt");
+      }
+
+      deferredPrompt = null;
+      installButton.hidden = true;
+    });
+
+    window.addEventListener("appinstalled", () => {
+      console.log("PWA was installed");
+      installButton.hidden = true;
+      deferredPrompt = null;
+    });
+  </script>
+
+</body>
+</html>

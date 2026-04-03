@@ -1,0 +1,137 @@
+[
+  {
+    "id": "cosmopolitan",
+    "name": "COSMOPOLITAN",
+    "ingredients": "Vodka • Triple Sec • Cranberry • Lime Juice",
+    "meta": "What's my Name Again?",
+    "ratio": "2 oz Vodka • 1 oz Triple Sec • 1 oz Cranberry • 0.5 oz Lime Juice",
+    "glass": "Martini Glass",
+    "garnish": "Lime Wheel"
+  },
+  {
+    "id": "green-tea-shot",
+    "name": "GREEN TEA SHOT",
+    "ingredients": "Whiskey • Peach Schnapps • Sour Mix",
+    "meta": "⚠️ Buyer • Beware",
+    "ratio": "Equal parts Irish Whiskey • Peach Schnapps • Sour Mix",
+    "glass": "Shot Glass",
+    "garnish": "None"
+  },
+  {
+    "id": "gummy-bear-shot",
+    "name": "GUMMY BEAR SHOT",
+    "ingredients": "Peach Schnapps • Grape Schnapps • Sour Mix",
+    "meta": "🔥 Holy SHIT • This is delicious!",
+    "ratio": "Equal parts Peach Schnapps • Grape Schnapps • Sour Mix",
+    "glass": "Shot Glass",
+    "garnish": "None"
+  },
+  {
+    "id": "sweet-drunk-lisa",
+    "name": "SWEET DRUNK LISA",
+    "ingredients": "Butterscotch • Baileys • Kahlua",
+    "meta": "I'm a Sagittarius what sign are YOU?",
+    "ratio": "1 oz Butterscotch • 1 oz Baileys • 1 oz Kahlua",
+    "glass": "Shot Glass",
+    "garnish": "None"
+  },
+  {
+    "id": "irish-car-bomb",
+    "name": "IRISH CAR BOMB",
+    "ingredients": "Guinness • Jameson • Baileys",
+    "meta": "Take this quarter tip and SHOVE IT up your ass!",
+    "ratio": "1 pint Guinness • 0.5 oz Jameson • 0.5 oz Baileys",
+    "glass": "Pint + Shot Glass",
+    "garnish": "None"
+  },
+  {
+    "id": "carrot-cake-shot",
+    "name": "CARROT CAKE SHOT",
+    "ingredients": "Butterscotch • Baileys • Goldschlager",
+    "meta": "You JUST THREW UP in my wastebasket and you want me to serve you?",
+    "ratio": "1 oz Butterscotch • 1 oz Baileys • Splash of Goldschlager",
+    "glass": "Shot Glass",
+    "garnish": "None"
+  },
+  {
+    "id": "sugar-baby",
+    "name": "SUGAR BABY",
+    "ingredients": "Butterscotch • Baileys",
+    "meta": "Aunt Edie is crying, again.",
+    "ratio": "Equal parts Butterscotch • Baileys",
+    "glass": "Shot Glass",
+    "garnish": "None"
+  },
+  {
+    "id": "jager-bomb",
+    "name": "JAGER BOMB",
+    "ingredients": "Jagermeister • Red Bull",
+    "meta": "I'm not as thunk as some drinkle might peep.",
+    "ratio": "1 shot Jagermeister • Half glass Red Bull",
+    "glass": "Pint + Shot Glass",
+    "garnish": "None"
+  },
+  {
+    "id": "long-island-iced-tea",
+    "name": "LONG ISLAND ICED TEA",
+    "ingredients": "Vodka • Gin • Rum • Tequila • Triple Sec • Sour Mix • Cola",
+    "meta": "Nobody knows a full moon like a bartender.",
+    "ratio": "0.5 oz each clear liquor • 1 oz Sour Mix • Splash Cola",
+    "glass": "Tall Glass",
+    "garnish": "Lemon"
+  },
+  {
+    "id": "grateful-dead",
+    "name": "GRATEFUL DEAD",
+    "ingredients": "Vodka • Gin • Rum • Tequila • Triple Sec • Sour Mix • Raspberry Liqueur",
+    "meta": "Aunt Edie fell, again.",
+    "ratio": "0.5 oz each liquor • 1 oz Sour Mix • Splash Raspberry Liqueur",
+    "glass": "Tall Glass",
+    "garnish": "Lemon"
+  },
+  {
+    "id": "bay-breeze",
+    "name": "BAY BREEZE",
+    "ingredients": "Vodka • Cranberry • Pineapple Juice",
+    "meta": "Two words. Liquid Courage.",
+    "ratio": "1.5 oz Vodka • 3 oz Cranberry • 1.5 oz Pineapple Juice",
+    "glass": "Tall Glass",
+    "garnish": "Lime"
+  },
+  {
+   "id": "sea-breeze",
+    "name": "SEA BREEZE",
+    "ingredients": "Vodka • Cranberry • Grapefruit Juice",
+    "meta": "Two words. Liquid Courage.",
+    "ratio": "1.5 oz Vodka • 3 oz Cranberry • 1.5 oz Grapefruit Juice",
+    "glass": "Tall Glass",
+    "garnish": "Lime"
+  },
+   {
+   "id": "sex-on-the-beach",
+    "name": "SEX ON THE BEACH",
+    "ingredients": "Vodka • Peach Schnapps • Cranberry • Orange Juice",
+    "meta": "Two words. Liquid Courage.",
+    "ratio": "1.5 oz Vodka • 0.75 oz Peach Schnapps • 1.5 oz Cranberry Juice • 1.5 oz Orange Juice",
+    "glass": "Tall Glass",
+    "garnish": "Orange slice or cherry"
+  },
+   {
+   "id": "nutty-irishman",
+    "name": "NUTTY IRISHMAN",
+    "ingredients": "Baileys Irish Cream • Frangelico",
+    "meta": "Two words. Liquid Courage.",
+    "ratio": "1.5 oz Frangelico • 1.5 oz Baileys",
+    "glass": "Rocks Glass",
+    "garnish": "None"
+  },
+  {
+   "id": "pancake-shot",
+    "name": "PANCAKE SHOT",
+    "ingredients": "Jameson • Butterscotch Schnapps • Orange Juice",
+    "meta": "Two words. Liquid Courage.",
+    "ratio": "1 oz Jameson • 0.5 oz Butterscotch Schnapps • 1.5 oz Orange Juice Chaser",
+    "glass": "2 Shot Glasses",
+    "garnish": "None"
+  }
+]

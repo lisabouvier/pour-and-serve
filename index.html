@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pour & Serve</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#8B1E3F">
-  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
 </head>
 
 <body>
@@ -239,7 +239,7 @@
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/service-worker.js")
+        navigator.serviceWorker.register("service-worker.js")
           .then(() => console.log("Service worker registered"))
           .catch((error) => console.error("Service worker registration failed:", error));
       });

@@ -1,11 +1,11 @@
 const CACHE_NAME = "pour-and-serve-v3";
 const ASSETS = [
-  "/",
-  "/index.html",
-  "/style.css",
-  "/manifest.webmanifest",
-  "/icons/icon-192.png",
-  "/icons/icon-512.png"
+  "./",
+  "./index.html",
+  "./style.css",
+  "./manifest.webmanifest",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png"
 ];
 
 self.addEventListener("install", (event) => {

@@ -133,6 +133,14 @@ body.light .search-bar {
   transition: all 0.3s ease;
 }
 
+body:not(.light) .search-bar {
+  color: white;
+}
+
+body:not(.light) .search-bar::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
 .search-bar::placeholder {
   color: #aaa;
 }

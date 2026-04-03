@@ -195,8 +195,9 @@ body.light .search-bar {
 }
 
 .search-section {
-  width: 90%;
-  max-width: 620px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
   margin: 0 auto 20px;
   position: relative;
   z-index: 0;
@@ -205,6 +206,7 @@ body.light .search-bar {
 .search-bar {
   width: 100%;
   padding: 16px 20px;
+  max-width: 620px;
   font-size: 16px;
   border: 2px solid rgba(139, 30, 63, 0.15);
   border-radius: 16px;
@@ -212,8 +214,6 @@ body.light .search-bar {
   background: #1a1d24;
   color: #f3f4f6;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
   transition: all 0.3s ease;
 }
 

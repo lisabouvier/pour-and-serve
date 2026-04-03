@@ -1,7 +1,7 @@
 {
   "name": "Pour & Serve",
   "short_name": "Pour & Serve",
-  "start_url": "/pour-and-serve/",
+  "start_url": "/pour-and-serve/index.html",
   "scope": "/pour-and-serve/",
   "display": "standalone",
   "background_color": "#8B1E3F",
@@ -19,3 +19,4 @@
     }
   ]
 }
+

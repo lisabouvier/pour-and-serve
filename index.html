@@ -46,6 +46,7 @@
 
   <script>
   const container = document.querySelector(".container");
+  const searchInput = document.getElementById("searchInput");
 
   fetch("drinks.json")
   .then(res => res.json())
@@ -73,12 +74,11 @@
       container.appendChild(card);
     });
 
-    // initializeApp();
+      initializeApp();
   });
 </script>
 
   <script>
-    const searchInput = document.getElementById("searchInput");
     const filterLinks = document.querySelectorAll("[data-filter]");
     let savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     let currentFilter = "all";

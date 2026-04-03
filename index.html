@@ -53,28 +53,31 @@
     />
   </section>
 
-  <<form 
+<section id="addDrinkSection">
+  <form 
   class="add-drink-form" 
   id="addDrinkForm"
   action="https://formspree.io/f/xaqlpdlv"
   method="POST"
-  >
+>
 
   <h2 class="add-drink-title">Submit a Drink</h2>
   <p class="add-drink-subtitle">
     Built by bartenders. Help make it better.
   </p>
 
-  <form class="add-drink-form" id="addDrinkForm">
-    <input type="text" id="drinkName" name="drinkName" placeholder="Drink Name" required />
-    <input type="text" id="ingredients" name="ingredients" placeholder="Ingredients" required />
-    <input type="text" id="ratio" name="ratio" placeholder="Ratio" />
-    <input type="text" id="glass" name="glass" placeholder="Glass" />
-    <input type="text" id="garnish" name="garnish" placeholder="Garnish" />
-    <textarea id="bartenderNote" name="bartenderNote" placeholder="Bartender Note"></textarea>
+  <input type="text" name="drinkName" placeholder="Drink Name" required />
+  <input type="text" name="ingredients" placeholder="Ingredients" required />
+  <input type="text" name="ratio" placeholder="Ratio" />
+  <input type="text" name="glass" placeholder="Glass" />
+  <input type="text" name="garnish" placeholder="Garnish" />
+  <textarea name="bartenderNote" placeholder="Bartender Note"></textarea>
 
-    <button type="submit" class="submit-drink-button">Submit Drink</button>
-  </form>
+  <button type="submit" class="submit-drink-button">Submit Drink</button>
+
+  <p class="form-message" id="formMessage"></p>
+</form>
+</section>
 
   <p class="form-message" id="formMessage"></p>
 </section>
@@ -112,9 +115,7 @@
     });
 
       initializeApp();
-
-      addDrinkForm.addEventListener("submit", (event) => {
-  addDrinkForm.addEventListener("submit", async (event) => {
+addDrinkForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const formData = new FormData(addDrinkForm);
@@ -138,7 +139,7 @@
     formMessage.textContent = "Something went wrong. Try again.";
   }
 });
-  formMessage.textContent = "Thanks — your drink submission has been received.";
+      formMessage.textContent = "Thanks — your drink submission has been received.";
   addDrinkForm.reset();
 });
   });

@@ -15,16 +15,27 @@
   <p class="install-hint">
     📱 <strong>Pro Tip: Add this to your home screen for quick access!</strong>
   </p>
+  <button id="installButton" class="install-cta" hidden>
+  Install App
+</button>
+
+<section class="hero">
+  <h1 class="hero-title">Pour and Serve</h1>
+  <p class="hero-subtitle">
+    Built for bartenders, by a bartender.<br>
+    Fast, no-nonsense drink reference for real shifts.
+  </p>
+</section>
 
   <nav class="menu">
     <a href="#" class="active" data-filter="all">Home</a>
     <a href="#" data-filter="favorites">Favorites</a>
-    <a href="#">Add a Drink</a>
+    <a href="#" data-filter="add-drink">Add a Drink</a>
     <a href="#">About</a>
     <a href="#">Contact</a>
-    <button id="installButton" hidden>Install App</button>
+    
 
-    <label class="theme-switch">
+     <label class="theme-switch">
       <input type="checkbox" id="themeToggle">
       <span class="slider">
         <span class="icon moon">🌙</span>
@@ -41,6 +52,32 @@
       class="search-bar"
     />
   </section>
+
+  <<form 
+  class="add-drink-form" 
+  id="addDrinkForm"
+  action="https://formspree.io/f/xaqlpdlv"
+  method="POST"
+  >
+
+  <h2 class="add-drink-title">Submit a Drink</h2>
+  <p class="add-drink-subtitle">
+    Built by bartenders. Help make it better.
+  </p>
+
+  <form class="add-drink-form" id="addDrinkForm">
+    <input type="text" id="drinkName" name="drinkName" placeholder="Drink Name" required />
+    <input type="text" id="ingredients" name="ingredients" placeholder="Ingredients" required />
+    <input type="text" id="ratio" name="ratio" placeholder="Ratio" />
+    <input type="text" id="glass" name="glass" placeholder="Glass" />
+    <input type="text" id="garnish" name="garnish" placeholder="Garnish" />
+    <textarea id="bartenderNote" name="bartenderNote" placeholder="Bartender Note"></textarea>
+
+    <button type="submit" class="submit-drink-button">Submit Drink</button>
+  </form>
+
+  <p class="form-message" id="formMessage"></p>
+</section>
 
   <section class="container"></section>
 
@@ -75,6 +112,35 @@
     });
 
       initializeApp();
+
+      addDrinkForm.addEventListener("submit", (event) => {
+  addDrinkForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(addDrinkForm);
+
+  try {
+    const response = await fetch(addDrinkForm.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (response.ok) {
+      formMessage.textContent = "Thanks — your drink submission has been received.";
+      addDrinkForm.reset();
+    } else {
+      formMessage.textContent = "Something went wrong. Try again.";
+    }
+  } catch (error) {
+    formMessage.textContent = "Something went wrong. Try again.";
+  }
+});
+  formMessage.textContent = "Thanks — your drink submission has been received.";
+  addDrinkForm.reset();
+});
   });
 </script>
 
@@ -82,6 +148,10 @@
     const filterLinks = document.querySelectorAll("[data-filter]");
     let savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     let currentFilter = "all";
+
+    const addDrinkSection = document.getElementById("addDrinkSection");
+const addDrinkForm = document.getElementById("addDrinkForm");
+const formMessage = document.getElementById("formMessage");
 
     function updateFavoriteButton(button, isFavorite) {
       if (isFavorite) {
@@ -98,6 +168,12 @@
     function applyFilters() {
       const cards = document.querySelectorAll(".card");
       const searchValue = searchInput.value.toLowerCase().trim();
+
+      if (currentFilter === "add-drink") {
+  addDrinkSection.classList.add("active");
+} else {
+  addDrinkSection.classList.remove("active");
+}
 
       cards.forEach((card) => {
         const titleEl = card.querySelector(".card__title");
@@ -120,7 +196,10 @@
         const matchesFavorite =
           currentFilter === "favorites" ? savedFavorites.includes(cardId) : true;
 
-        const shouldShow = matchesSearch && matchesFavorite;
+        const shouldShow =
+  currentFilter === "add-drink"
+    ? false
+    : matchesSearch && matchesFavorite;
 
         if (shouldShow) {
           card.style.display = "";
@@ -278,6 +357,8 @@
       deferredPrompt = null;
     });
   </script>
+
+  <script src="script.js"></script>
 
 </body>
 </html>

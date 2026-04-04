@@ -154,15 +154,16 @@
       const cards = document.querySelectorAll(".card");
       const searchValue = searchInput.value.toLowerCase().trim();
 
-      // 🍸 Easter Egg triggers
+ // 🍸 Easter Egg triggers
 if (searchValue === "86 me") {
   showEasterMessage("You're cut off. Drink water 😏");
 }
 
 if (searchValue === "shift drink") {
   showEasterMessage("Alright… one quick one 👀");
-  
-  if (searchValue === "help me") {
+}
+
+if (searchValue === "help me") {
   showEasterMessage("Breathe. You’ve got this. One drink at a time 🍸");
 }
 

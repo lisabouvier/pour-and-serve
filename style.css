@@ -211,9 +211,10 @@ body.light .search-bar {
   padding: 10px 16px;
   border-radius: 20px;
   font-size: 14px;
-  opacity: 0;
+  opacity: 1;
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 9999;
 }
 
 .easter-message.show {

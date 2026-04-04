@@ -278,7 +278,9 @@ body:not(.light) .search-bar::placeholder {
 }
 
 .hero-subtitle {
-  color: #9ca3af;
+  font-size: 16px;
+  color: #f3f4f6;
+  line-height: 1.4;
 }
 
 body.light .hero-subtitle {
@@ -299,8 +301,15 @@ body.light #installButton:hover {
   text-align: center;
   margin-top: 40px;
   font-size: 16px;
-  opacity: 0.7;
+  opacity: 0;
   display: none;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.empty-message.show {
+  opacity: 0.7;
+  transform: translateY(0);
 }
 
 .search-bar::placeholder {
@@ -332,8 +341,19 @@ body.light #installButton:hover {
 
 .favorite-button.is-favorite {
   color: #8b1e3f;
-  transform: scale(1.2);
   text-shadow: 0 0 8px rgba(139, 30, 63, 0.35);
+  animation: pop 0.25s ease forwards;
+}
+
+.favorite-button:active {
+  transform: scale(0.9);
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+  100% { transform: scale(1.2); }
+  
 }
 
 .hero {
@@ -347,12 +367,6 @@ body.light #installButton:hover {
   margin-bottom: 8px;
   letter-spacing: 0.5px;
   margin-top: 0;
-}
-
-.hero-subtitle {
-  font-size: 16px;
-  color: #374151;
-  line-height: 1.4;
 }
 
 body.light .hero-subtitle {
@@ -671,5 +685,11 @@ body.light #installButton:hover {
   transform: translateY(-1px);
 }
 
+body:not(.light) .hero-subtitle {
+  color: #f3f4f6;
+}
 
+body.light .hero-subtitle {
+  color: #374151;
+}
 

@@ -15,7 +15,7 @@
     📱 <strong>Pro Tip: Add this to your home screen for quick access!</strong>
   </p>
 
-  <button id="installButton" class="install-cta" hidden>
+  <button id="installButton" class="install-cta">
     Install App
   </button>
 
@@ -118,7 +118,12 @@
 
   <section class="container"></section>
 
+  <p id="emptyMessage" class="empty-message">
+  No favorites yet. Tap ★ to save your go-to pours 🍸
+</p>
+
   <script>
+    const emptyMessage = document.getElementById("emptyMessage");
     const container = document.querySelector(".container");
     const searchInput = document.getElementById("searchInput");
     const filterLinks = document.querySelectorAll("[data-filter]");
@@ -238,6 +243,15 @@ if (searchValue === "help me") {
           }, 250);
         }
       });
+
+      const visibleCards = [...document.querySelectorAll(".card")]
+      .filter(card => card.style.display !== "none");
+
+    if (currentFilter === "favorites" && visibleCards.length === 0) {
+      emptyMessage.style.display = "block";
+    } else {
+      emptyMessage.style.display = "none";
+    }
     }
 
     function initializeApp() {
@@ -449,6 +463,5 @@ addDrinkForm.addEventListener("submit", async (event) => {
     });
   </script>
 
-  <script src="script.js"></script>
-</body>
+  </body>
 </html>

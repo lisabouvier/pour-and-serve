@@ -361,34 +361,7 @@ addDrinkForm.addEventListener("submit", async (event) => {
     });
 
     if (response.ok) {
-      const formDataObj = Object.fromEntries(formData.entries());
-      addDrinkToUI(formDataObj);
-      formMessage.textContent = "Drink added to your list 🍸";
-      addDrinkForm.reset();
-      applyFilters();
-    } else {
-      formMessage.textContent = "Something went wrong. Try again.";
-    }
-
-  } catch (error) {
-    formMessage.textContent = "Something went wrong. Try again.";
-  }
-});
-    addDrinkForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-
-      const formData = new FormData(addDrinkForm);
-
-      try {
-        const response = await fetch(addDrinkForm.action, {
-          method: "POST",
-          body: formData,
-          headers: {
-            Accept: "application/json"
-          }
-        });
-
-        if (response.ok) {
+     
   const formDataObj = Object.fromEntries(formData.entries());
 
   addDrinkToUI(formDataObj); // 👈 MAGIC LINE
@@ -397,8 +370,8 @@ addDrinkForm.addEventListener("submit", async (event) => {
   addDrinkForm.reset();
 
   applyFilters(); // keep filters working
-}
-        } else {
+
+} else {
           formMessage.textContent = "Something went wrong. Try again.";
         }
       } catch (error) {

@@ -326,6 +326,27 @@ if (searchValue === "help me") {
         initializeApp();
       });
 
+      function addDrinkToUI(data) {
+  const card = document.createElement("div");
+  card.className = "card";
+  card.dataset.id = Date.now();
+
+  card.innerHTML = `
+    <button class="favorite-button">☆</button>
+    <h2 class="card__title">${data.drinkName}</h2>
+    <p class="card__text">${data.ingredients}</p>
+    <p class="card__meta">User Submitted</p>
+    <div class="card__details">
+      <p><strong>Ratio:</strong> ${data.ratio || "—"}</p>
+      <p><strong>Glass:</strong> ${data.glass || "—"}</p>
+      <p><strong>Garnish:</strong> ${data.garnish || "—"}</p>
+    </div>
+    <button class="card__button">Pour & Serve</button>
+  `;
+
+  container.prepend(card);
+}
+
     addDrinkForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
@@ -341,8 +362,15 @@ if (searchValue === "help me") {
         });
 
         if (response.ok) {
-          formMessage.textContent = "Thanks — your drink submission has been received.";
-          addDrinkForm.reset();
+  const formDataObj = Object.fromEntries(formData.entries());
+
+  addDrinkToUI(formDataObj); // 👈 MAGIC LINE
+
+  formMessage.textContent = "Drink added to your list 🍸";
+  addDrinkForm.reset();
+
+  applyFilters(); // keep filters working
+}
         } else {
           formMessage.textContent = "Something went wrong. Try again.";
         }

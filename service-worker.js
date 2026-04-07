@@ -1,4 +1,4 @@
-const CACHE_NAME = "pour-and-serve-v7";
+const CACHE_NAME = "pour-and-serve-v8";
 
 const APP_SHELL = [
   "./",

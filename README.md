@@ -1,5 +1,7 @@
 # 🍸 Pour & Serve
 
+![Pour & Serve Screenshot](PourandServe.jpg)
+
 **A bartender-first web app built for speed, clarity, and real-world use behind the bar.**
 
 ---

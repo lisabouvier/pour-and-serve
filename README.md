@@ -1,5 +1,7 @@
 # 🍸 Pour & Serve
 
+[![Live App](https://img.shields.io/badge/Live-App-8B1E3F?style=for-the-badge)](https://lisabouvier.github.io/pour-and-serve/)
+
 ![Pour & Serve Screenshot](PourandServe.jpg)
 
 **A bartender-first web app built for speed, clarity, and real-world use behind the bar.**

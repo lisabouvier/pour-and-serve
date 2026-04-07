@@ -388,10 +388,20 @@ body.light #installButton:hover {
 }
 
 .hero-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: nowrap;
   font-size: 32px;
   margin-bottom: 8px;
   letter-spacing: 0.5px;
   margin-top: 0;
+}
+
+.hero-title__icon {
+  width: 32px;
+  height: auto;
 }
 
 body.light .hero-subtitle {
@@ -749,3 +759,4 @@ body.light .hero-subtitle {
 .logo:hover {
   opacity: 0.85;
 }
+

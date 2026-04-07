@@ -1,6 +1,7 @@
 # 🍸 Pour & Serve
 
 [![Live App](https://img.shields.io/badge/Live-App-8B1E3F?style=for-the-badge)](https://lisabouvier.github.io/pour-and-serve/)
+[![GitHub stars](https://img.shields.io/github/stars/lisabouvier/pour-and-serve?style=for-the-badge)](https://github.com/lisabouvier/pour-and-serve)
 
 ![Pour & Serve Screenshot](PourandServe.jpg)
 

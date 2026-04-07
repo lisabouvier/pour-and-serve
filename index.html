@@ -88,7 +88,7 @@
 
     <p>
       It was built in the middle of real shifts — loud bars, long nights, and that
-      moment where someone orders something and your brain just… <italics>blanks.</italics>
+      moment where someone orders something and your brain just… <em>blanks.</em>
     </p>
 
     <p>
@@ -377,11 +377,7 @@ addDrinkForm.addEventListener("submit", async (event) => {
 
     if (response.ok) {
      
-  const formDataObj = Object.fromEntries(formData.entries());
-
-  addDrinkToUI(formDataObj); // 👈 MAGIC LINE
-
-  formMessage.textContent = "Drink added to your list 🍸";
+  formMessage.textContent = "Thanks — your drink submission has been received. 🍸";
   addDrinkForm.reset();
 
   applyFilters(); // keep filters working

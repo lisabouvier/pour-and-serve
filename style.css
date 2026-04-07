@@ -718,3 +718,8 @@ body.light .hero-subtitle {
   color: #374151;
 }
 
+.about em {
+  font-style: italic;
+  color: #8B1E3F;
+}
+

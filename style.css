@@ -345,15 +345,33 @@ body:not(.light) .search-bar::placeholder {
   padding-top: 0;
 }
 
+.install-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 10px auto 20px;
+  text-align: center;
+}
+
   .install-hint {
     margin-top: 12px;
-    font-size: 13px;
+    font-size: 14px;
+    opacity: 0.8;
   }
 
   .install-cta {
     margin: 12px auto 10px;
-    padding: 10px 18px;
+    padding: 10px 20px;
     font-size: 14px;
+    border-radius: 999px;
+    border: none;
+    background: #8b1e3f;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 }
 
@@ -573,8 +591,8 @@ body.light #installButton {
 }
 
 .install-cta:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 12px 30px rgba(139,30,63,0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 06px 15px rgba(0,0,0,0.2);
 }
 
 @keyframes fadeUp {
@@ -744,4 +762,15 @@ body.light .card__button {
 
 body.light .card__button:hover {
   background: #741934;
+}
+
+.iphone-users {
+  text-align: center;
+  margin: 10px auto 20px;
+  padding: 10px 15px;
+  max-width: 280px;
+  border-radius: 8px;
+  background: rgba(139, 30 , 63, 0.08);
+  font-size: 13px;
+  opacity: 0.7;
 }

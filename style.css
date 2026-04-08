@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  min-height: 200vh;
   background: #111;
   color: #f5f5f5;
   transition: background 0.4s ease, color 0.4s ease;
@@ -249,7 +248,8 @@ body.light .search-bar {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 0 auto 20px;
+  margin: 10px auto 20px;
+  padding: 0 10px;
   position: relative;
   z-index: 0;
 }
@@ -280,20 +280,6 @@ body:not(.light) .search-bar::placeholder {
   font-size: 16px;
   color: #f3f4f6;
   line-height: 1.4;
-}
-
-body.light .hero-subtitle {
-  color: #374151;
-}
-
-body.light #installButton {
-  background: rgba(139, 30, 63, 0.1);
-  color: #8B1E3F;
-  border: 1px solid rgba(139, 30, 63, 0.2);
-}
-
-body.light #installButton:hover {
-  background: rgba(139, 30, 63, 0.2);
 }
 
 .empty-message {
@@ -354,11 +340,9 @@ body.light #installButton:hover {
     padding-top: 0;
   }
 
-@media (max-width: 600px) {
-  .search-section {
-    margin: 10px auto 20px;
-    padding: 0 10px;
-  }
+.search-section {
+  margin: 16px 16px 12px;
+  padding-top: 0;
 }
 
   .install-hint {
@@ -412,10 +396,6 @@ body.light #installButton {
   background: rgba(139, 30, 63, 0.1);
   color: #8B1E3F; /* cranberry text */
   border: 1px solid rgba(139, 30, 63, 0.2);
-}
-
-body.light #installButton:hover {
-  background: rgba(139, 30, 63, 0.2);
 }
 
 .container {
@@ -549,7 +529,7 @@ body.light #installButton:hover {
 }
 
 .card__button:active {
-    transform: scale(0,98);
+    transform: scale(0.98);
 }
 
 .card__button:hover {
@@ -724,39 +704,44 @@ body:not(.light) .hero-subtitle {
   color: #f3f4f6;
 }
 
-body.light .hero-subtitle {
-  color: #374151;
-}
-
 .about em {
   font-style: italic;
   font-weight: 500;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-right: auto;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+body.light .card {
+  background: #ffffff;
+  color: #242424;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
-.logo__img {
-  width: 30px;
-  height: 30px;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+body.light .card__title {
+  color: #242424;
 }
 
-.logo__text {
-  font-weight: 700;
+body.light .card__text {
+  color: #555;
+}
+
+body.light .card__meta {
   color: #8B1E3F;
-  font-size: 18px;
 }
 
-.logo:hover {
-  opacity: 0.85;
+body.light .card__details {
+  color: #444;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
+body.light .card__details p {
+  color: #444;
+}
+
+body.light .card__button {
+  background: #8B1E3F;
+  color: white;
+}
+
+body.light .card__button:hover {
+  background: #741934;
+}

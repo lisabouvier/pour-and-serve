@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pour & Serve</title>
+  <title>Pour and Serve</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.webmanifest" />
   <meta name="theme-color" content="#8B1E3F" />
@@ -15,40 +15,43 @@
     📱 <strong>Pro Tip: Add this to your home screen for quick access!</strong>
   </p>
 
-  <button id="installButton" class="install-cta">
+  <button id="installButton" class="install-cta" hidden>
     Install App
   </button>
+
+  <p class="iphone-users">
+  📱 <strong>iPhone users: Tap Share → Add to Home Screen to install the app.</strong>
+</p>
 
   <p id="easterMessage" class="easter-message"></p>
 
   <section class="hero">
-  <h1 class="hero-title">
-    <img src="martini.png" alt="Martini glass logo" class="hero-title__icon" />
-    <span>Pour and Serve</span>
-  </h1>
+    <h1 class="hero-title">
+      <img src="martini.png" alt="Martini glass logo" class="hero-title__icon" />
+      <span>Pour and Serve</span>
+    </h1>
 
-  <p class="hero-subtitle">
-    Built for bartenders, by a bartender.<br />
-    A fast, no-nonsense drink reference for real shifts.
-  </p>
-</section>
+    <p class="hero-subtitle">
+      Built for bartenders, by a bartender.<br />
+      A fast, no-nonsense drink reference for real shifts.
+    </p>
+  </section>
 
-  
   <nav class="menu">
-  <a href="#" class="active" data-filter="all">Home</a>
-  <a href="#" data-filter="favorites">Favorites</a>
-  <a href="#" data-filter="add-drink">Add a Drink</a>
-  <a href="#" data-filter="about">About</a>
-  <a href="#">Contact</a>
+    <a href="#" class="active" data-filter="all">Home</a>
+    <a href="#" data-filter="favorites">Favorites</a>
+    <a href="#" data-filter="add-drink">Add a Drink</a>
+    <a href="#" data-filter="about">About</a>
+    <a href="#">Contact</a>
 
-  <label class="theme-switch">
-    <input type="checkbox" id="themeToggle" />
-    <span class="slider">
-      <span class="icon moon">🌙</span>
-      <span class="icon sun">☀️</span>
-    </span>
-  </label>
-</nav>
+    <label class="theme-switch">
+      <input type="checkbox" id="themeToggle" />
+      <span class="slider">
+        <span class="icon moon">🌙</span>
+        <span class="icon sun">☀️</span>
+      </span>
+    </label>
+  </nav>
 
   <section class="search-section">
     <input
@@ -60,7 +63,6 @@
   </section>
 
   <section id="addDrinkSection" class="add-drink-section">
-
     <form
       class="add-drink-form"
       id="addDrinkForm"
@@ -85,45 +87,44 @@
   </section>
 
   <section id="aboutSection" class="about-section">
-  <section class="about">
-    
-    <p>This wasn’t built in a quiet office.</p>
+    <div class="about">
+      <p>This wasn’t built in a quiet office.</p>
 
-    <p>
-      It was built in the middle of real shifts — loud bars, long nights, and that
-      moment where someone orders something and your brain just… <em>blanks.</em>
-    </p>
+      <p>
+        It was built in the middle of real shifts — loud bars, long nights, and that
+        moment where someone orders something and your brain just… <em>blanks.</em>
+      </p>
 
-    <p>
-      We've all been there. You’re three deep. Tickets are stacking. Someone wants 7 Green Tea shots,
-      someone else wants something “not too sweet but also strong,” and you don’t
-      have time to guess.
-    </p>
+      <p>
+        We’ve all been there. You’re three deep. Tickets are stacking. Someone wants
+        7 Green Tea shots, someone else wants something “not too sweet but also strong,”
+        and you don’t have time to guess.
+      </p>
 
-    <p>That’s where this comes in.</p>
+      <p>That’s where this comes in.</p>
 
-    <p>
-      Pour and Serve is a no-BS drink reference built for speed. No stories.
-      No essays. No scrolling through someone’s life story to find a ratio.
-    </p>
+      <p>
+        Pour and Serve is a no-BS drink reference built for speed. No stories.
+        No essays. No scrolling through someone’s life story to find a ratio.
+      </p>
 
-    <p>Just the drinks. <strong>Clean. Fast. Done.</strong></p>
+      <p>Just the drinks. <strong>Clean. Fast. Done.</strong></p>
 
-    <p>Built by a bartender who got tired of digging for answers mid-shift.</p>
+      <p>Built by a bartender who got tired of digging for answers mid-shift.</p>
 
-    <p>
-      If you’ve ever stood there thinking, “I should know this…” — yeah, this is for you.
-    </p>
+      <p>
+        If you’ve ever stood there thinking, “I should know this…” — yeah, this is for you.
+      </p>
 
-    <p class="about-signoff">Now get back to the bar.</p>
+      <p class="about-signoff">Now get back to the bar.</p>
+    </div>
   </section>
-</section>
 
   <section class="container"></section>
 
   <p id="emptyMessage" class="empty-message">
-  No favorites yet. Tap ★ to save your go-to pours 🍸
-</p>
+    No favorites yet. Tap ★ to save your go-to pours 🍸
+  </p>
 
   <script>
     const emptyMessage = document.getElementById("emptyMessage");
@@ -133,19 +134,20 @@
     const addDrinkSection = document.getElementById("addDrinkSection");
     const addDrinkForm = document.getElementById("addDrinkForm");
     const formMessage = document.getElementById("formMessage");
-
     const easterMessage = document.getElementById("easterMessage");
+    const aboutSection = document.getElementById("aboutSection");
 
-    function showEasterMessage(text) {
-  easterMessage.textContent = text;
-  easterMessage.classList.add("show");
-
-  setTimeout(() => {
-    easterMessage.classList.remove("show");
-  }, 2500);
-}
     let savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     let currentFilter = "all";
+
+    function showEasterMessage(text) {
+      easterMessage.textContent = text;
+      easterMessage.classList.add("show");
+
+      setTimeout(() => {
+        easterMessage.classList.remove("show");
+      }, 2500);
+    }
 
     function updateFavoriteButton(button, isFavorite) {
       if (isFavorite) {
@@ -158,36 +160,36 @@
         button.setAttribute("aria-label", "Add to favorites");
       }
     }
-      const aboutSection = document.getElementById("aboutSection");
+
     function applyFilters() {
       const cards = document.querySelectorAll(".card");
       const searchValue = searchInput.value.toLowerCase().trim();
 
-if (searchValue === "86 me") {
-  showEasterMessage("You're cut off. Drink water 😏");
-}
+      if (searchValue === "86 me") {
+        showEasterMessage("You're cut off. Drink water 😏");
+      }
 
-if (searchValue === "shift drink") {
-  showEasterMessage("Alright… one quick one 👀");
-}
+      if (searchValue === "shift drink") {
+        showEasterMessage("Alright… one quick one 👀");
+      }
 
-if (searchValue === "help me") {
-  showEasterMessage("Breathe. You’ve got this. One drink at a time 🍸");
-}
+      if (searchValue === "help me") {
+        showEasterMessage("Breathe. You’ve got this. One drink at a time 🍸");
+      }
 
-           if (currentFilter === "add-drink") {
-  addDrinkSection.classList.add("active");
-  aboutSection.classList.remove("active");
-  container.style.display = "none";
-} else if (currentFilter === "about") {
-  addDrinkSection.classList.remove("active");
-  aboutSection.classList.add("active");
-  container.style.display = "none";
-} else {
-  addDrinkSection.classList.remove("active");
-  aboutSection.classList.remove("active");
-  container.style.display = "";
-}
+      if (currentFilter === "add-drink") {
+        addDrinkSection.classList.add("active");
+        aboutSection.classList.remove("active");
+        container.style.display = "none";
+      } else if (currentFilter === "about") {
+        addDrinkSection.classList.remove("active");
+        aboutSection.classList.add("active");
+        container.style.display = "none";
+      } else {
+        addDrinkSection.classList.remove("active");
+        aboutSection.classList.remove("active");
+        container.style.display = "";
+      }
 
       cards.forEach((card) => {
         const titleEl = card.querySelector(".card__title");
@@ -211,10 +213,10 @@ if (searchValue === "help me") {
           currentFilter === "favorites" ? savedFavorites.includes(cardId) : true;
 
         const shouldShow =
-  currentFilter !== "add-drink" &&
-  currentFilter !== "about" &&
-  matchesSearch &&
-  matchesFavorite;
+          currentFilter !== "add-drink" &&
+          currentFilter !== "about" &&
+          matchesSearch &&
+          matchesFavorite;
 
         if (shouldShow) {
           card.style.display = "";
@@ -247,14 +249,15 @@ if (searchValue === "help me") {
         }
       });
 
-      const visibleCards = [...document.querySelectorAll(".card")]
-      .filter(card => card.style.display !== "none");
+      const visibleCards = [...document.querySelectorAll(".card")].filter(
+        (card) => card.style.display !== "none"
+      );
 
-    if (currentFilter === "favorites" && visibleCards.length === 0) {
-      emptyMessage.style.display = "block";
-    } else {
-      emptyMessage.style.display = "none";
-    }
+      if (currentFilter === "favorites" && visibleCards.length === 0) {
+        emptyMessage.style.display = "block";
+      } else {
+        emptyMessage.style.display = "none";
+      }
     }
 
     function initializeApp() {
@@ -275,7 +278,7 @@ if (searchValue === "help me") {
 
           button.textContent = card.classList.contains("expanded")
             ? "Hide Recipe"
-            : "Pour & Serve";
+            : "Pour and Serve";
         });
       });
 
@@ -335,7 +338,7 @@ if (searchValue === "help me") {
               <p><strong>Glass:</strong> ${drink.glass}</p>
               <p><strong>Garnish:</strong> ${drink.garnish}</p>
             </div>
-            <button class="card__button">Pour & Serve</button>
+            <button class="card__button">Pour and Serve</button>
           `;
 
           container.appendChild(card);
@@ -344,48 +347,25 @@ if (searchValue === "help me") {
         initializeApp();
       });
 
-      function addDrinkToUI(data) {
-  const card = document.createElement("div");
-  card.className = "card";
-  card.dataset.id = Date.now();
+    addDrinkForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
 
-  card.innerHTML = `
-    <button class="favorite-button">☆</button>
-    <h2 class="card__title">${data.drinkName}</h2>
-    <p class="card__text">${data.ingredients}</p>
-    <p class="card__meta">User Submitted</p>
-    <div class="card__details">
-      <p><strong>Ratio:</strong> ${data.ratio || "—"}</p>
-      <p><strong>Glass:</strong> ${data.glass || "—"}</p>
-      <p><strong>Garnish:</strong> ${data.garnish || "—"}</p>
-    </div>
-    <button class="card__button">Pour & Serve</button>
-  `;
+      const formData = new FormData(addDrinkForm);
 
-  container.prepend(card);
-}
-addDrinkForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
+      try {
+        const response = await fetch(addDrinkForm.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json"
+          }
+        });
 
-  const formData = new FormData(addDrinkForm);
-
-  try {
-    const response = await fetch(addDrinkForm.action, {
-      method: "POST",
-      body: formData,
-      headers: {
-        Accept: "application/json"
-      }
-    });
-
-    if (response.ok) {
-     
-  formMessage.textContent = "Thanks — your drink submission has been received. 🍸";
-  addDrinkForm.reset();
-
-  applyFilters(); // keep filters working
-
-} else {
+        if (response.ok) {
+          formMessage.textContent = "Thanks — your drink submission has been received. 🍸";
+          addDrinkForm.reset();
+          applyFilters();
+        } else {
           formMessage.textContent = "Something went wrong. Try again.";
         }
       } catch (error) {
@@ -461,6 +441,3 @@ addDrinkForm.addEventListener("submit", async (event) => {
       deferredPrompt = null;
     });
   </script>
-
-  </body>
-</html>

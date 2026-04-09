@@ -163,5 +163,24 @@
     "ratio": "1.5 oz Midori • 1.5 oz Vodka • 0.5 oz Orange Juice",
     "glass": "Tall Glass",
     "garnish": "None"
+  },
+  {
+   "id": "martini",
+    "name": "MARTINI",
+    "ingredients": "Gin (or Vodka) • Dry Vermouth",
+    "meta": "If you don't know what you want, it's gin.",
+    "ratio": "2.5 oz Gin (or Vodka) • 0.5 oz Dry Vermouth",
+    "glass": "Martini Glass",
+    "garnish": "Olives or Lemon Twist"
+  },
+ {
+   "id": "old-fashioned",
+    "name": "OLD FASHIONED",
+    "ingredients": "Bourbon • Bitters • Simple Syrup",
+    "meta": "If it requires a blender, we're out of that",
+    "ratio": "2 oz Bourbon • 2-3 dashes Bitters • 0.25 Simple Syrup",
+    "glass": "Rocks Glass",
+    "garnish": "Orange peel or Cherry"
   }
+
 ]

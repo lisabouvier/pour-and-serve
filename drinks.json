@@ -120,7 +120,7 @@
    "id": "nutty-irishman",
     "name": "NUTTY IRISHMAN",
     "ingredients": "Baileys Irish Cream • Frangelico",
-    "meta": "Two words. Ciquid Lourage.",
+    "meta": "I've got a PUKER!",
     "ratio": "1.5 oz Frangelico • 1.5 oz Baileys",
     "glass": "Rocks Glass",
     "garnish": "None"
@@ -132,6 +132,36 @@
     "meta": "Call an Ambulance. Dennis fell and broke his head open.",
     "ratio": "1 oz Jameson • 0.5 oz Butterscotch Schnapps • 1.5 oz Orange Juice Chaser",
     "glass": "2 Shot Glasses",
+    "garnish": "None"
+  },
+
+  {
+   "id": "margarita",
+    "name": "MARGARITA",
+    "ingredients": "Tequila • Triple Sec • Lime Juice",
+    "meta": "Bright. Sharp. Does not play well with others",
+    "ratio": "2 oz Tequila • 1 oz Triple Sec • 1 oz Lime Juice",
+    "glass": "Rocks Glass",
+    "garnish": "Lime Wedge, Optional Salt Rim"
+  },
+
+  {
+   "id": "pickleback",
+    "name": "PICKLEBACK",
+    "ingredients": "Jameson • Pickle Juice",
+    "meta": "Sounds wrong. Tastes right. Trust the Process",
+    "ratio": "1 oz Jameson • 1 oz Pickle Juice Chaser",
+    "glass": "2 Shot Glasses",
+    "garnish": "None"
+  },
+
+  {
+   "id": "melon-ball",
+    "name": "MELON BALL",
+    "ingredients": "Midori • Vodka • Orange Juice",
+    "meta": "Sweet and Smooth. Like your Aunt Kathy on Karaoke night.",
+    "ratio": "1.5 oz Midori • 1.5 oz Vodka • 0.5 oz Orange Juice",
+    "glass": "Tall Glass",
     "garnish": "None"
   }
 ]
